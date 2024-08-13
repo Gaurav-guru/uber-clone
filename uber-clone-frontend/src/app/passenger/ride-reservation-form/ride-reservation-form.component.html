@@ -1,0 +1,165 @@
+<div class="modal-overlay-layer flex-column standard-border-radius" *ngIf="orderOpened">
+  <div class="width-50 height-70 light-grey standard-border-radius">
+    <mat-stepper #stepper class="light-grey standard-border-radius">
+      <mat-step [errorMessage]="fieldsRequiredErrorText" [stepControl]="rideBasicInfoForm">
+        <form [formGroup]="rideBasicInfoForm">
+          <ng-template matStepLabel>Enter Basic Information</ng-template>
+          <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+            <mat-icon matListItemIcon class="icon">settings</mat-icon>
+            Choose Options:
+          </div>
+          <br>
+          <div class="flex-row black-text justify-items-start padding-left-2vw width-100 mat-h2 font-weight-medium">
+            Vehicle Type:&nbsp;&nbsp;
+
+            <mat-select class="width-40 select-bar black-text font-weight-medium" formControlName="vehicleType" required>
+              <mat-option value="STANDARD">Standard</mat-option>
+              <mat-option value="LUXURY">Luxury</mat-option>
+              <mat-option value="VAN">Van</mat-option>
+            </mat-select>
+            <br>
+          </div>
+          <br>
+          <div class="width-100 flex-row padding-left-2vw justify-items-start">
+            <mat-checkbox class="black-text fourth-times-bigger margin-right-20" formControlName="babyTransport">Child Transport</mat-checkbox>
+            <mat-checkbox class="black-text fourth-times-bigger" formControlName="petTransport">Pet Transport</mat-checkbox>
+          </div>
+          <br>
+          <br>
+          <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+            <mat-icon matListItemIcon class="icon">access_time_filled</mat-icon>
+            Choose Time:
+          </div>
+          <br>
+          <div class="width-100 flex-row padding-left-2vw justify-items-start">
+            <mat-checkbox class="black-text fourth-times-bigger margin-right-20"
+                          (change)="toggleDatepicker($event)" checked>For Soonest</mat-checkbox>
+              <mat-form-field appearance="fill">
+                  <mat-label>For Later</mat-label>
+                  <input matInput [ngxTimepicker]="picker" formControlName="scheduleTime"
+                         [format]="24" [disableClick]="true" readonly>
+                  <ngx-material-timepicker-toggle [for]="picker" matIconSuffix class="margin-right-2" [disabled]="!isReservation">
+                  </ngx-material-timepicker-toggle>
+                  <ngx-material-timepicker #picker [theme]="timepickerTheme" [appendToInput]="true"></ngx-material-timepicker>
+              </mat-form-field>
+          </div>
+          <br>
+          <br>
+          <div class="width-100 flex-row margin-top-1vh">
+            <button type="button" mat-button class="bright-orange button-rounded mat-h2" (click)="close()">
+              <mat-icon class="icon">close</mat-icon>
+              Close
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [errorMessage]="emailFormatErrorText" [stepControl]="passengersEmailsForm">
+        <form [formGroup]="passengersEmailsForm">
+          <ng-template matStepLabel>Add Passengers</ng-template>
+          <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+            <mat-icon matListItemIcon class="icon">mail</mat-icon>
+            Enter Email:
+          </div>
+          <br>
+          <div class="width-100 flex-row padding-left-2vw justify-items-start">
+            <mat-form-field appearance="fill" class="width-50 margin-right-5">
+              <mat-label>Email</mat-label>
+              <input matInput name="email" [matChipInputFor]="chipGrid" formControlName="email">
+            </mat-form-field>
+            <button mat-mini-fab class="bright-orange white-text box-shadow-none" type="button" (click)="addPassenger()">
+              <mat-icon>done</mat-icon>
+            </button>
+          </div>
+          <br>
+          <br>
+          <div class="padding-left-2vw">
+            <div class="font-weight-heavy mat-headline-5">
+              Added Passengers:
+            </div>
+          </div>
+          <hr>
+          <div class="flex-row width-100 height-20 justify-items-start padding-left-2vw">
+              <mat-chip-grid #chipGrid aria-label="Emails:" class="overflow-y-scroll height-20-vh width-100">
+                <mat-chip *ngFor="let passenger of passengers"
+                              (removed)="removePassenger(passenger.email)"
+                              class="mat-h2 font-weight-medium">
+                  {{passenger.email}}
+                  <button matChipRemove [attr.aria-label]="'Remove'">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip>
+              </mat-chip-grid>
+          </div>
+          <br>
+          <div class="width-100 flex-row margin-top-1vh">
+            <button type="button" mat-button class="bright-orange button-rounded mat-h2" (click)="close()">
+              <mat-icon class="icon">close</mat-icon>
+              Close
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Payment</ng-template>
+        <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+          <mat-icon matListItemIcon class="icon">payments</mat-icon>
+          Payment Information:
+        </div>
+        <br>
+        <br>
+        <div class="width-100 flex-row distance-between-max">
+          <div class="mat-h2 font-weight-medium padding-left-2vw">
+            Price (total for the ride):
+          </div>
+          <div class="mat-h1 font-weight-heavy padding-right-2vw">
+            {{totalPrice | number:'1.2-2'}} din
+          </div>
+        </div>
+        <br>
+        <div class="width-100 flex-row distance-between-max">
+          <div class="mat-h2 font-weight-medium padding-left-2vw">
+            Price (per person):
+          </div>
+          <div class="mat-h1 font-weight-heavy padding-right-2vw">
+            {{pricePerPerson | number:'1.2-2'}} din
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <div class="width-100 flex-row distance-between-max">
+          <div class="mat-h1 font-weight-heavy padding-left-2vw">
+            To Pay:
+          </div>
+          <div class="mat-h1 font-weight-heavy padding-right-2vw">
+            {{pricePerPerson | number:'1.2-2'}} din
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="width-100 flex-row distance-between-max">
+          <div class="padding-left-2vw">
+            <button type="button" mat-button class="bright-orange button-rounded mat-h2" (click)="close()">
+              <mat-icon class="icon">close</mat-icon>
+              Close
+            </button>
+          </div>
+          <div class="padding-right-2vw">
+            <button type="button" mat-button class="bright-orange button-rounded mat-h2" (click)="reserve()" id="pay-button">
+              <mat-icon class="icon">payments</mat-icon>
+              Pay
+            </button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>
+<app-ride-reserved-popup [popupOpened]="openSuccessPopup"
+                         [favoriteRideOrder]="reservedRide"
+                         (popupClosed)="closePopup()"></app-ride-reserved-popup>
+<app-ride-not-reserved-popup [errorMessage]="rideReservationFailureMessage" [popupOpened]="openFailPopup" (popupClosed)="closePopup()"></app-ride-not-reserved-popup>

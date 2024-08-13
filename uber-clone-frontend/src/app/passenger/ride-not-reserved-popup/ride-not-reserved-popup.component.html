@@ -1,0 +1,18 @@
+<div id="driverNotFound" class = "modal-overlay-layer standard-border-radius flex-column standard-border-radius" *ngIf="popupOpened">
+  <div class = "width-30 light-grey standard-border-radius flex-column card-padding">
+    <div class = "flex-row width-100">
+      <mat-icon matListItemIcon
+                class="red-text square-icon">remove_circle</mat-icon>
+      <h1 class="font-weight-medium text-align-center padding-left-2vw">
+        {{errorMessage}}
+      </h1>
+    </div>
+    <br>
+    <div class="flex-row width-100">
+      <button type="button" mat-button class = "bright-orange button-rounded mat-h2 margin-right-5" (click)="close()">
+        OK
+      </button>
+    </div>
+  </div>
+</div>
+

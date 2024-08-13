@@ -1,0 +1,60 @@
+<div class="main-page">
+  <app-driver-side-navigation></app-driver-side-navigation>
+  <div class="main-content padding-top-2vh">
+    <app-change-password *ngIf="driverService.changingPassword$ | async"></app-change-password>
+    <div class="bright-orange label-container width-50">
+      <mat-icon matListItemIcon class="person-icon">person_outline</mat-icon>
+      User Data
+    </div>
+
+    <div class="profile-picture-container">
+      <img [src]="image" class="profile-picture" alt="profile picture">
+    </div>
+
+    <div id="file-upload" class="flex-row mat-h3 padding-bottom-2vh"
+         [ngClass]="{'show': updateMode, 'visibility-hidden': !updateMode }">
+      <input type="file" class="file-input"
+             (change)="onFileSelected($event)" #fileUpload>
+      <mat-icon>edit</mat-icon>
+      <p (click)="fileUpload.click()" class="font-weight-light">Change profile picture</p>
+    </div>
+
+    <form [formGroup]="updateDriverForm" (ngSubmit)="toggleUpdateMode()" class="form-container center-horizontal">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput name="name" formControlName="name">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput name="surname" formControlName="surname">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput name="telephoneNumber" formControlName="telephoneNumber">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput name="address" formControlName="address">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" formControlName="email">
+      </mat-form-field><br>
+
+      <div class="buttons">
+        <button mat-button class="bright-orange button-rounded mat-h1"
+                [ngClass]="{'sky-blue': updateMode, 'bright-orange': !updateMode }"
+                type="submit">
+          <mat-icon class="icon">mode_edit</mat-icon>
+          {{updateButtonText}}
+        </button>
+        <button mat-button class="bright-orange button-rounded mat-h1" type="button"
+        (click)="openChangePassword()">
+          <mat-icon class="icon">password</mat-icon>
+          Change Password
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,85 @@
+<div class = "flex-column card width-fit-content white-text">
+  <form [formGroup]="searchForm" (ngSubmit)="drawRoute()" id = "searchForm">
+    <div class = "flex-row">
+      <mat-icon class = "icon black-icon">location_on</mat-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>From:</mat-label>  <!-- Translated from 'Od:' -->
+        <input matInput name = "departure" formControlName = "departure"
+               (keyup)="getDepartureSuggestions()"
+               [matAutocomplete]="dep">
+        <mat-autocomplete
+          #dep="matAutocomplete" [displayWith]="displayLabel" (optionSelected)="sendLocationInputToDraw($event.option.value,'departure')">
+          <mat-option *ngFor="let option of departureSuggestions" [value]="option">
+            {{option.address}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <br>
+    <div class = "flex-row">
+      <mat-icon class = "icon black-icon">flag</mat-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>To:</mat-label>  <!-- Translated from 'Do:' -->
+        <input matInput name = "destination" formControlName = "destination"
+               (keyup)="getDestinationSuggestions()"
+               [matAutocomplete]="dest">
+        <mat-autocomplete #dest="matAutocomplete"
+                          [displayWith]="displayLabel"
+                          (optionSelected)="sendLocationInputToDraw($event.option.value,'destination')">
+          <mat-option *ngFor="let option of destinationSuggestions" [value]="option">
+            {{option.address}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <br>
+    <div class = "flex-row space-evenly width-100">
+      <button mat-button class = "bright-orange button-rounded mat-h2" type="submit" [disabled]="mapRoutingOnly">
+        <mat-icon class = "icon">search</mat-icon>
+        Search  <!-- Translated from 'Pretraga' -->
+      </button>
+
+      <button mat-button class = "sky-blue button-rounded mat-h2" type="button" [disabled]="!enableReservation || !valid"
+       (click)="showOrderForm()">
+        <mat-icon class = "icon">receipt</mat-icon>
+        Order  <!-- Translated from 'Poruči' -->
+      </button>
+    </div>
+    <br>
+    <div class = "black-icon center-horizontal width-fit-content">or</div>  <!-- Translated from 'ili' -->
+    <br>
+    <div class = "flex-row space-evenly width-100">
+      <button mat-button class = "sky-blue button-rounded mat-h2 center-horizontal" type="button"
+              (click) = "toggleMode()">
+        <mat-icon class = "icon">location_on</mat-icon>
+        {{modeButtonText}}
+      </button>
+      <button mat-button class = "wine-red button-rounded mat-h2 center-horizontal" type="button"
+              (click) = "clearMapMarkersAndRoute()">
+        <mat-icon class = "icon">close</mat-icon>
+        Clear  <!-- Translated from 'Očisti' -->
+      </button>
+    </div>
+  </form>
+</div>
+<br>
+<br>
+<div class = "card flex-column width-fit-content">
+  <form [formGroup]="estimatesForm">
+    <div class = "flex-row">
+      <mat-icon class = "icon black-icon">access_time</mat-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>Time:</mat-label>  <!-- Translated from 'Vreme:' -->
+        <input matInput name = "time" formControlName="time">
+      </mat-form-field>
+    </div>
+    <br>
+    <div class = "flex-row">
+      <mat-icon class = "icon black-icon">money</mat-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>Price:</mat-label>  <!-- Translated from 'Cena:' -->
+        <input matInput name = "price" formControlName="price">
+      </mat-form-field>
+    </div>
+  </form>
+</div>

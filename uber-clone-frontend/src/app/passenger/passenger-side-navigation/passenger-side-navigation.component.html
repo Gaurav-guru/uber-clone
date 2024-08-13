@@ -1,0 +1,48 @@
+<mat-drawer-container class="height-100">
+  <mat-drawer mode="side" opened class="width-20-vw no-border white-text">
+    <div class="sidenav">
+      <div class="padding-bottom sidenav">
+        <div class="logo-bar center-horizontal">
+          <img src="../../../assets/images/logo.png" class="logo-bar-image"/>
+          <p class="center-vertical mat-headline-5"> Uber Clone</p>
+        </div>
+
+        <mat-card class="sidenav-profile-header">
+          <img [src]="image" class="profile-picture">
+          <mat-card-content>
+            <p class="mat-h1 text-align-center">
+              {{fullName}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-nav-list>
+          <a mat-list-item class="list-item" routerLink="/passenger-home" routerLinkActive="list-item-active">
+            <mat-icon matListItemIcon class="icon">home</mat-icon>
+            <span class="mat-h2">Home</span>
+          </a>
+
+          <a mat-list-item class="list-item" routerLink="/passenger-ride-history" routerLinkActive="list-item-active">
+            <mat-icon matListItemIcon class="icon">history</mat-icon>
+            <span class="mat-h2">Ride History</span>
+          </a>
+
+          <a mat-list-item class="list-item" routerLink="/passenger-account" routerLinkActive="list-item-active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListItemIcon class="icon">person_outline</mat-icon>
+            <span class="mat-h2">Account</span>
+          </a>
+
+          <a mat-list-item class="list-item" routerLink="/passenger-live-support" routerLinkActive="list-item-active">
+            <mat-icon matListItemIcon class="icon">support_agent</mat-icon>
+            <span class="mat-h2">Support</span>
+          </a>
+        </mat-nav-list>
+
+        <button id="logout" mat-button class="bright-orange button-rounded mat-h1 stick-to-bottom logout-button center-horizontal" (click)="logout()">
+          <mat-icon class="icon">logout</mat-icon>
+          Logout
+        </button>
+      </div>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

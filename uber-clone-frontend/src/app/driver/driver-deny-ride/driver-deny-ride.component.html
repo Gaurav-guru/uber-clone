@@ -1,0 +1,27 @@
+<div class="modal-overlay-layer white-text flex-column standard-border-radius">
+  <div id="deny" class="standard-border-radius mat-h1">
+    <mat-form-field appearance="fill" [formGroup]="denyRideForm">
+      <mat-label>Reason</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="20"
+                cdkAutosizeMaxRows="20"
+                name="reason"
+                formControlName="reason"
+      ></textarea>
+    </mat-form-field>
+    <div class="flex-row space-evenly width-100" id="buttons">
+      <button mat-button class="bright-orange button-rounded mat-h1" type="submit"
+      (click)="confirm()">
+        <mat-icon class="icon">check</mat-icon>
+        Confirm
+      </button>
+
+      <button mat-button class="bright-orange button-rounded mat-h1" type="button"
+      (click)="back()">
+        <mat-icon class="icon">arrow_back</mat-icon>
+        Back
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="flex-column card width-fit-content white-text">
+  <form [formGroup]="searchForm" (ngSubmit)="drawRoute()">
+    <div class="flex-row">
+      <mat-icon class="icon black-icon">location_on</mat-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>From:</mat-label>
+        <input matInput name="departure" formControlName="departure">
+      </mat-form-field>
+    </div>
+
+    <br>
+
+    <div class="flex-row">
+      <mat-icon class="icon black-icon">flag</mat-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>To:</mat-label>
+        <input matInput name="destination" formControlName="destination">
+      </mat-form-field>
+    </div>
+
+    <br>
+
+    <div class="flex-row space-evenly width-100">
+      <button id="deny" *ngIf="(mapService.rideInProgress$ | async) === false" mat-button class="red button-rounded mat-h2" type="button"
+      (click)="deny()">
+        <mat-icon class="icon">do_not_disturb</mat-icon>
+        Deny
+      </button>
+
+      <button id="accept" *ngIf="(mapService.rideInProgress$ | async) === false" mat-button class="green button-rounded mat-h2" type="button"
+      (click)="accept()">
+        <mat-icon class="icon">not_started</mat-icon>
+        Start
+      </button>
+
+      <button id="finish" *ngIf="(mapService.rideInProgress$ | async) === true" mat-button class="green button-rounded mat-h2" type="button"
+      (click)="finish()">
+        <mat-icon class="icon">check</mat-icon>
+        Finish Ride
+      </button>
+    </div>
+  </form>
+</div>

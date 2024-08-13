@@ -1,0 +1,20 @@
+<div class="main-page dark-grey">
+  <app-driver-side-navigation></app-driver-side-navigation>
+  <div class="main-content">
+    <app-driver-deny-ride *ngIf="mapService.rideDenied$ | async"></app-driver-deny-ride>
+    <div id="ride-estimates">
+      <app-driver-ride *ngIf="mapService.rideReceived$ | async" 
+                       (chosenDeparture)="sendLocationToMap($event, 'departure')"
+                       (chosenDestination)="sendLocationToMap($event, 'destination')"
+                       (bothLocationsSelected)="drawRoute()">
+      </app-driver-ride>
+    </div>
+
+    <app-map [displayCar]="displayCar" 
+             [departure]="departure" 
+             [destination]="destination" 
+             [passenger]="passenger">
+    </app-map>
+  </div>
+</div>
+<router-outlet></router-outlet>

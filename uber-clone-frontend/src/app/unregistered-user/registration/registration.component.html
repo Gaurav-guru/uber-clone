@@ -1,0 +1,61 @@
+<div class="width-100 height-100 place-end">
+  <div class="label-container width-70 sub-margin-medium label-flipped dark-grey">
+    Registration
+  </div>
+
+  <form [formGroup]="registerPassengerForm" class="height-70 width-100">
+    <div class="stepper-container">
+      <div [ngClass]="{'show': firstPartVisible, 'hide': !firstPartVisible}" class="height-85 slide-left">
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>First Name</mat-label>
+          <input matInput name="name" formControlName="name">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>Last Name</mat-label>
+          <input matInput name="surname" formControlName="surname">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>Address</mat-label>
+          <input matInput name="address" formControlName="address">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>Phone</mat-label>
+          <input matInput name="telephoneNumber" formControlName="telephoneNumber">
+        </mat-form-field><br>
+      </div>
+
+      <div [ngClass]="{'hide': firstPartVisible, 'show': !firstPartVisible}" class="height-85 slide-right">
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>Email</mat-label>
+          <input matInput name="email" formControlName="email" type="email">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="password" formControlName="password">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill" class="mat-form-field center-horizontal">
+          <mat-label>Repeat Password</mat-label>
+          <input matInput required type="password" name="passwordRepeat" formControlName="passwordRepeat">
+        </mat-form-field><br>
+      </div>
+
+      <div class="nav-bottom-bar height-15">
+        <button mat-mini-fab class="sky-blue" type="button" [disabled]="firstPartVisible" (click)="activateFirstPart()">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-button type="submit" id="register" class="button-rounded sky-blue mat-h1 no-margin" [disabled]="firstPartVisible" (click)="check()">
+          <mat-icon class="icon">perm_identity</mat-icon>
+          Register
+        </button>
+        <button mat-mini-fab class="sky-blue" type="button" id="nextButton" [disabled]="!firstPartVisible" (click)="activateSecondPart()">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

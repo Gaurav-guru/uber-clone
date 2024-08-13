@@ -1,0 +1,10 @@
+<div id="map" class="standard-border-radius">
+  <div *ngIf="(mapService.rideInProgress$ | async) === false" class="legend standard-border-radius flex-row center-vertical center-horizontal mat-h2">
+    <img src="../../../assets/images/redcar.png" class="height-100">
+    &nbsp;Occupied &nbsp;&nbsp;
+    <img src="../../../assets/images/greencar.png" class="height-100">
+    &nbsp;Available
+  </div>
+  <app-panic></app-panic>
+  <app-ride-inconsistency></app-ride-inconsistency>
+</div>

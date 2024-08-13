@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #303841;
+}
+
+* {
+  font-family: Roboto, sans-serif;
+}
+
+.leaflet-routing-alternatives-container {
+  color: black;
+  font-weight: 300;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+  line-height: 3.25vh!important;
+}

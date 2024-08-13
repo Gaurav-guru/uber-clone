@@ -1,0 +1,11 @@
+#panic {
+  z-index: 1001;
+  position: absolute;
+  left: 2vw;
+  bottom: 4vh;
+  height: 6vh;
+  width: fit-content;
+  padding: 1vh 2vw;
+  font-weight: 300;
+  box-shadow: rgb(0 0 0 / 50%) 0 0.65vh 0.35vh;
+}

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Enter Date</h1>
+<div mat-dialog-content>
+
+  <mat-form-field appearance="fill">
+    <mat-label>From</mat-label>
+    <input matInput [matDatepicker]="pickerFrom" (dateChange)="changeFrom($event)">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+    <mat-datepicker #pickerFrom></mat-datepicker>
+  </mat-form-field> <br><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>To</mat-label>
+    <input matInput [matDatepicker]="pickerTo" (dateChange)="changeTo($event)">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerTo"></mat-datepicker-toggle>
+    <mat-datepicker #pickerTo></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.start" cdkFocusInitial>Confirm</button>
+</div>

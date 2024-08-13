@@ -1,0 +1,65 @@
+<div class="modal-overlay-layer flex-column standard-border-radius" *ngIf="passengerAdded">
+  <div class="width-50 height-70 light-grey standard-border-radius">
+    <br>
+    <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+      <mat-icon matListItemIcon class="icon">directions_car</mat-icon>
+      Ride Details:
+    </div>
+    <br>
+    <br>
+    <div class="width-100 flex-row distance-between-max">
+      <div class="mat-h2 font-weight-medium padding-left-2vw">
+        Route:
+      </div>
+      <div class="mat-h1 font-weight-heavy padding-right-2vw text-align-right">
+        {{route}}
+      </div>
+    </div>
+    <br>
+    <div class="width-100 flex-row distance-between-max">
+      <div class="mat-h2 font-weight-medium padding-left-2vw">
+        Departure Time:
+      </div>
+      <div class="mat-h1 font-weight-heavy padding-right-2vw">
+        {{scheduleTime}}
+      </div>
+    </div>
+    <br>
+    <div class="width-100 flex-row distance-between-max">
+      <div class="mat-h2 font-weight-medium padding-left-2vw">
+        Total Cost:
+      </div>
+      <div class="mat-h1 font-weight-heavy padding-right-2vw">
+        {{totalPrice | number:'1.2-2'}} din
+      </div>
+    </div>
+    <br>
+    <div class="width-100 flex-row distance-between-max">
+      <div class="mat-h2 font-weight-medium padding-left-2vw">
+        Cost (per person):
+      </div>
+      <div class="mat-h1 font-weight-heavy padding-right-2vw">
+        {{pricePerPerson | number:'1.2-2'}} din
+      </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <div class="width-100 flex-row distance-between-max">
+      <div class="mat-h1 font-weight-heavy padding-left-2vw">
+        To Pay:
+      </div>
+      <div class="mat-h1 font-weight-heavy padding-right-2vw">
+        {{pricePerPerson | number:'1.2-2'}} din
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="width-100 flex-row">
+      <button type="button" mat-button class="bright-orange button-rounded mat-h2" (click)="pay()">
+        <mat-icon class="icon">payments</mat-icon>
+        Pay
+      </button>
+    </div>
+  </div>
+</div>

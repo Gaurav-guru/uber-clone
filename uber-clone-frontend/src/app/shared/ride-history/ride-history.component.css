@@ -1,0 +1,17 @@
+.rides-table{
+  min-width: 90%;
+  background: white;
+  margin: auto;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.cellText{
+  color: black;
+}
+
+.chartc{
+  width: 90%;
+  height: 360px;
+  margin: auto;
+}

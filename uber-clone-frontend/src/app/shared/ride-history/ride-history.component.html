@@ -1,0 +1,46 @@
+<div class="bright-orange label-container width-50">
+  Ride History
+</div><br>
+
+<div>
+  <canvasjs-chart [options]="numberOfRidesOptions" [ngStyle]="{'display': chartsEnabled}" class="chartc"></canvasjs-chart>
+</div>
+
+<table mat-table [ngStyle]="{'display': tableEnabled}" [dataSource]="dataSource" class="mat-elevation-z8 rides-table ">
+
+  <ng-container matColumnDef="route">
+    <th mat-header-cell *matHeaderCellDef class="cellText"> Route </th>
+    <td mat-cell *matCellDef="let element" class="cellText"> {{element.route}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="startEnd">
+    <th mat-header-cell *matHeaderCellDef class="cellText"> Start/End </th>
+    <td mat-cell *matCellDef="let element" class="cellText"> {{element.startEnd}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef class="cellText"> Price </th>
+    <td mat-cell *matCellDef="let element" class="cellText"> {{element.price}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row
+      (click)="selected = row;"
+      *matRowDef="let row; columns: columns;"></tr>
+</table>
+<br><br>
+<mat-paginator [ngStyle]="{'display': tableEnabled}" [pageSizeOptions]="[5, 10, 25, 100]"
+               showFirstLastButtons
+               aria-label="Select page of periodic elements">
+</mat-paginator>
+<br><br>
+
+<div class="buttons padding-3" [ngStyle]="{'display': tableEnabled}">
+  <button mat-button class="bright-orange button-rounded mat-h1"
+          [ngClass]="{'bright-orange': true }"
+          (click)="generateReport()"
+          type="submit">
+    <mat-icon class="icon">mode_edit</mat-icon>
+    Generate Report
+  </button>
+</div>

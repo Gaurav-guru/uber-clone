@@ -1,0 +1,43 @@
+* {
+  font-weight: 100 !important;
+}
+
+.profile-picture {
+  border: 0.75vh solid #FF5722;
+  border-radius: 50%;
+  width: 7vw;
+  height: 7vw;
+  margin-bottom: 2vh;
+}
+
+.sidenav-profile-header {
+  background-color: #303841;
+  box-shadow: none;
+  border-style: none;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  align-items: center;
+}
+
+.list-item {
+  align-items: center;
+  padding-left: 1vw !important;
+  border-bottom-right-radius: 1.5vw;
+  border-top-right-radius: 1.5vw;
+  width: 17vw;
+}
+
+.list-item:hover, .list-item-active {
+  background-color: rgba(0, 173, 181,0.5);
+}
+
+.sidenav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #303841;
+}
+
+.padding-bottom {
+  padding-bottom: 2vh;
+}

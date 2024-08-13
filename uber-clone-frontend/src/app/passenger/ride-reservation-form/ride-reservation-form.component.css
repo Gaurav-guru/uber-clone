@@ -1,0 +1,11 @@
+.order-form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2vh 0;
+  border-radius: 1.25vw;
+  margin: auto;
+}
+
+.fourth-times-bigger {
+  transform: scale(1.25);
+}

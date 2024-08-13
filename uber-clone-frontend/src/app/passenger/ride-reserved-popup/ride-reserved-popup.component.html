@@ -1,0 +1,45 @@
+<div class="modal-overlay-layer standard-border-radius flex-column" *ngIf="popupOpened">
+  <div class="width-30 light-grey standard-border-radius flex-column card-padding" *ngIf="firstStep">
+    <div class="flex-row width-100">
+      <mat-icon matListItemIcon class="green-text square-icon">check_circle_outline</mat-icon>
+      <h1 class="font-weight-medium text-align-center padding-left-2vw">
+        The ride has been successfully booked. Add the route to the list of favorites?
+      </h1>
+    </div>
+    <br>
+    <div class="flex-row width-100">
+      <button type="button" mat-button class="bright-orange button-rounded mat-h2 margin-right-5" (click)="openNameDialog()">
+        Yes
+      </button>
+      <button id="close" type="button" mat-button class="bright-orange button-rounded mat-h2" (click)="close()">
+        No
+      </button>
+    </div>
+  </div>
+  <div class="width-30 light-grey standard-border-radius flex-row padding-bottom-2vh padding-top-2vh name-popup-z-index" *ngIf="addFavoriteYes">
+    <div class="flex-column width-100">
+      <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+        <mat-icon matListItemIcon class="icon">edit</mat-icon>
+        Name:
+      </div>
+      <br>
+      <form [formGroup]="favoriteNameForm" class="width-100 flex-column">
+        <mat-form-field appearance="fill" class="width-80 margin-right-5">
+          <mat-label>Name</mat-label>
+          <input matInput name="favoriteName" formControlName="favoriteName">
+        </mat-form-field>
+      </form>
+      <br>
+      <div class="flex-row width-100">
+        <button type="button" mat-button class="bright-orange button-rounded mat-h2 margin-right-5" (click)="closeNaming()">
+          <mat-icon class="icon">close</mat-icon>
+          Close
+        </button>
+        <button type="submit" mat-button class="bright-orange button-rounded mat-h2" (click)="addFavorite()">
+          <mat-icon class="icon">add</mat-icon>
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

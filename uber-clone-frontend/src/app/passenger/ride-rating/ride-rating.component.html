@@ -1,0 +1,40 @@
+<div id="rating" class="modal-overlay-layer standard-border-radius flex-column standard-border-radius" *ngIf="windowVisible">
+  <div class="width-52 height-70 light-grey standard-border-radius padding-bottom-2vh padding-top-3vh">
+    <div class="label-container-small sky-blue stick-to-left flex-row white-text width-40">
+      <mat-icon matListItemIcon class="icon">star_border</mat-icon>
+      Rate {{who}}:
+    </div>
+    <br>
+    <div class="padding-left-2vw padding-right-2vw">
+      <div class="flex-row font-weight-medium mat-h1 width-100 justify-items-start">
+        <p class="margin-right-2">Rating:</p>
+        <app-rating-star-bar (ratingUpdated)="onRatingChanged($event)" [rating]="rating"></app-rating-star-bar>
+      </div>
+      <br>
+      <p class="mat-h1 font-weight-medium">Comment:</p>
+      <br>
+      <form [formGroup]="reviewForm">
+        <mat-form-field appearance="fill" class="width-100">
+          <mat-label>Comment:</mat-label>
+          <textarea id="comment"
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="13"
+            cdkAutosizeMaxRows="13"
+            name="comment" formControlName="comment"></textarea>
+        </mat-form-field>
+      </form>
+      <br>
+      <br>
+      <div class="flex-row width-100">
+        <button id="reviewLater" type="button" mat-button class="bright-orange button-rounded mat-h2 margin-right-5" (click)="close()">
+          Rate Later
+        </button>
+        <button id="review" type="submit" mat-button class="bright-orange button-rounded mat-h2" (click)="review()">
+          <mat-icon class="icon">star_outline</mat-icon>
+          Rate
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

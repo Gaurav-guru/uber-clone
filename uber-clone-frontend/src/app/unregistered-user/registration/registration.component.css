@@ -1,0 +1,67 @@
+.icon {
+  padding-right:0.25vw;
+  transform: scale(1.625);
+}
+
+.nav-bottom-bar {
+  display: flex;
+  padding: 0 1vw;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slide-left {
+  position: relative;
+  animation: animate-left 0.5s;
+}
+
+.slide-right {
+  position: relative;
+  animation: animate-right 0.5s;
+}
+
+@keyframes animate-right {
+   0% {
+     right: -300px;
+     opacity: 0;
+   }
+
+   100% {
+     right : 0;
+     opacity: 1;
+   }
+ }
+
+@keyframes animate-left {
+  0% {
+    left: -300px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.stepper-container {
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 0 2vw;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  color: white;
+}
+
+
+

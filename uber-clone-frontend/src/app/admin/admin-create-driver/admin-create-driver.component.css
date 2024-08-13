@@ -1,0 +1,15 @@
+.custom-flex{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.left{
+  width: 50%;
+}
+.right{
+  width: 50%;
+}
+
+.padding-right{
+  padding-top: 25vh;
+}

@@ -1,0 +1,29 @@
+<body class="dark-grey">
+  <app-passenger-side-navigation></app-passenger-side-navigation>
+  <div class="main-content">
+    <div id="ride-estimates">
+      <app-ride-estimates [enableReservation]="true"
+                          (orderIsClicked)="openRideOrderForm()"
+                          *ngIf="(mapService.rideInProgress$ | async) === false"></app-ride-estimates>
+    </div>
+    <app-map [displayCar]="false"></app-map>
+    <app-ride-reservation-form [orderOpened]="orderClicked"
+                              (orderClosed)="closeRideOrderForm()"></app-ride-reservation-form>
+    <app-ride-details [passengerAdded]="openDetails"
+                      [route]="rideRoute"
+                      [scheduleTime]="rideScheduleTime"
+                      [totalPrice]="rideTotalCost"
+                      [pricePerPerson]="ridePricePerPerson"
+                      (detailsClose)="closeRideDetailsForm()">
+    </app-ride-details>
+    <app-ride-rating id="driverRating" [windowVisible]="openVehicleRatingForm"
+                     [isDriver]="false"
+                     [rideId]="finishedRideId"
+                     (windowClosed)="closeRatings()"></app-ride-rating>
+    <app-ride-rating id="vehicleRating" [windowVisible]="openDriverRatingForm"
+                     [isDriver]="true"
+                     [rideId]="finishedRideId"
+                     (windowClosed)="openVehicleRating()"></app-ride-rating>
+  </div>
+</body>
+<router-outlet></router-outlet>

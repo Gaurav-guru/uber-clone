@@ -1,0 +1,81 @@
+.main-page {
+  display: flex;
+  flex-direction: row;
+  background-color: #303841;
+  height: 100vh;
+  color: white;
+}
+
+#user-header-container {
+  display: flex;
+  margin-top: 2vw;
+  padding: 1vw;
+  align-items: center;
+  flex-direction: row;
+  width: 40vw;
+}
+
+#user-header {
+  font-size: 3vw;
+  margin: 0;
+}
+
+.person-icon {
+  color: white;
+  margin-left: 1vw;
+  margin-right: 1.75vw;
+  margin-bottom: 0.2vw;
+  transform: scale(2);
+}
+
+.icon {
+  padding-right: 0.25vw;
+  transform: scale(1.625);
+}
+
+#profile-pic {
+  width: 12.5%;
+}
+
+.profile-picture-container {
+  background-color: inherit;
+  box-shadow: none;
+  border-style: none;
+  margin-top: 1vh;
+  width: 80vw;
+  text-align: center;
+}
+
+.profile-picture {
+  border: 0.3vw solid #FF5722;
+  border-radius: 50%;
+  width: 10%;
+  margin-bottom: 0.5vh;
+  height: 16vh;
+}
+
+.form-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 1vh auto;
+}
+
+#file-upload {
+  color: black;
+}
+
+#file-upload p:hover {
+  cursor: pointer;
+  color: gray;
+}

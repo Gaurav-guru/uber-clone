@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #303841;
+  font-weight: 100 !important;
+  color: white;
+}
+
+#my-main {
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+  height: 70vh;
+  padding-top: 6vh;
+  padding-bottom: 3vh;
+  background: #EEEEEE;
+  border-radius: 20px;
+  margin: 3vh auto auto;
+}
+
+.half-container {
+  height: 100%;
+  width: 50%;
+}
+
+a:hover {
+  cursor: pointer;
+}
