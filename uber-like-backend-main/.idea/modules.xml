@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/transport_projekat_backend/transport-projekat-backend.iml" filepath="$PROJECT_DIR$/transport_projekat_backend/transport-projekat-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/transport-projekat-serverski-sloj.iml" filepath="$PROJECT_DIR$/.idea/transport-projekat-serverski-sloj.iml" />
+    </modules>
+  </component>
+</project>
